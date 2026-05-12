@@ -456,13 +456,21 @@
             width: 100%;
             height: 350px;
             background: var(--color-product-bg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
             overflow: hidden;
             position: relative;
             transition: background 0.4s ease;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
         }
         
         .product-image::before {
@@ -599,11 +607,15 @@
             width: 100%;
             height: 500px;
             background: var(--color-product-bg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 8rem;
+            overflow: hidden;
             transition: background 0.4s ease;
+        }
+
+        .detail-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
         
         .detail-info h2 {
@@ -695,12 +707,16 @@
             width: 80px;
             height: 80px;
             background: var(--color-product-bg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
             flex-shrink: 0;
+            overflow: hidden;
             transition: background 0.4s ease;
+        }
+
+        .cart-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
         
         .cart-item-info {
@@ -871,7 +887,6 @@
             
             .detail-image {
                 height: 300px;
-                font-size: 6rem;
             }
             
             .detail-info h2 {
@@ -891,7 +906,6 @@
             
             .product-image {
                 height: 250px;
-                font-size: 3rem;
             }
             
             .notification {
@@ -1056,7 +1070,7 @@
                 name: "Vase Céramique Noir",
                 category: "Décoration",
                 price: 89.00,
-                icon: "🏺",
+                image: "https://images.pexels.com/photos/8251395/pexels-photo-8251395.jpeg",
                 description: "Vase en céramique artisanale, façonné à la main. Finition mate noir profond, parfait pour vos compositions florales minimalistes."
             },
             {
@@ -1064,7 +1078,7 @@
                 name: "Lampe Arc Moderne",
                 category: "Décoration",
                 price: 245.00,
-                icon: "💡",
+                image: "https://images.pexels.com/photos/112811/pexels-photo-112811.jpeg?auto=compress&cs=tinysrgb&w=600",
                 description: "Lampe sur pied au design architectural. Structure en métal brossé avec abat-jour en lin naturel. Éclairage d'ambiance chaleureux."
             },
             {
@@ -1072,7 +1086,7 @@
                 name: "Chaise Scandinave",
                 category: "Mobilier",
                 price: 320.00,
-                icon: "🪑",
+                image: "https://images.pexels.com/photos/29917912/pexels-photo-29917912.jpeg",
                 description: "Chaise au design scandinave épuré. Bois de chêne massif et assise rembourrée en tissu bouclette. Confort et élégance assurés."
             },
             {
@@ -1080,7 +1094,7 @@
                 name: "Table Basse Marbre",
                 category: "Mobilier",
                 price: 580.00,
-                icon: "🔲",
+                image: "https://images.pexels.com/photos/5942736/pexels-photo-5942736.jpeg?auto=compress&cs=tinysrgb&w=600",
                 description: "Table basse en marbre blanc de Carrare et piètement en acier noir mat. Une pièce maîtresse pour votre salon."
             },
             {
@@ -1088,7 +1102,7 @@
                 name: "Coussin Lin Naturel",
                 category: "Accessoires",
                 price: 45.00,
-                icon: "⬜",
+                image: "https://images.pexels.com/photos/16805372/pexels-photo-16805372.jpeg",
                 description: "Coussin en lin lavé naturel, garnissage en plumes d'oie. Douceur et confort pour votre canapé ou votre lit."
             },
             {
@@ -1096,7 +1110,7 @@
                 name: "Miroir Rond Laiton",
                 category: "Décoration",
                 price: 165.00,
-                icon: "⭕",
+                image: "https://images.pexels.com/photos/19079409/pexels-photo-19079409.jpeg?auto=compress&cs=tinysrgb&w=600",
                 description: "Miroir circulaire avec cadre en laiton brossé. Design intemporel qui apporte lumière et profondeur à votre espace."
             },
             {
@@ -1104,7 +1118,7 @@
                 name: "Bibliothèque Murale",
                 category: "Mobilier",
                 price: 425.00,
-                icon: "📚",
+                image: "https://images.pexels.com/photos/5781044/pexels-photo-5781044.jpeg",
                 description: "Étagère murale modulaire en bois de noyer. Design minimaliste et fonctionnel pour exposer vos objets favoris."
             },
             {
@@ -1112,7 +1126,7 @@
                 name: "Plaid Mérinos",
                 category: "Accessoires",
                 price: 135.00,
-                icon: "🧶",
+                image: "https://images.pexels.com/photos/27515139/pexels-photo-27515139.jpeg",
                 description: "Plaid en pure laine mérinos, tissé selon des techniques traditionnelles. Chaleur et douceur incomparables."
             },
             {
@@ -1120,7 +1134,7 @@
                 name: "Bougeoir Marbre",
                 category: "Accessoires",
                 price: 68.00,
-                icon: "🕯️",
+                image: "https://images.pexels.com/photos/5858233/pexels-photo-5858233.jpeg",
                 description: "Bougeoir sculptural en marbre noir veiné. Crée une ambiance intimiste et sophistiquée dans votre intérieur."
             }
         ];
@@ -1158,7 +1172,7 @@
             
             grid.innerHTML = filteredProducts.map(product => `
                 <div class="product-card" onclick="showProductDetail(${product.id})">
-                    <div class="product-image">${product.icon}</div>
+                    <div class="product-image"><img src="${product.image}" alt="${product.name}" loading="lazy"></div>
                     <div class="product-info">
                         <div class="product-category">${product.category}</div>
                         <h3 class="product-name">${product.name}</h3>
@@ -1234,7 +1248,7 @@
             const detail = document.getElementById('productDetail');
             
             detail.innerHTML = `
-                <div class="detail-image">${product.icon}</div>
+                <div class="detail-image"><img src="${product.image}" alt="${product.name}"></div>
                 <div class="detail-info">
                     <div class="product-category">${product.category}</div>
                     <h2>${product.name}</h2>
@@ -1316,7 +1330,7 @@
             } else {
                 cartItemsContainer.innerHTML = cart.map(item => `
                     <div class="cart-item">
-                        <div class="cart-item-image">${item.icon}</div>
+                        <div class="cart-item-image"><img src="${item.image}" alt="${item.name}" loading="lazy"></div>
                         <div class="cart-item-info">
                             <div class="cart-item-name">${item.name}</div>
                             <div class="cart-item-price">${item.price.toFixed(2).replace('.', ',')} €</div>
